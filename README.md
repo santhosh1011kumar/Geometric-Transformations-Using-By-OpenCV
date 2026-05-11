@@ -1,1 +1,185 @@
-# Geometric-Transformations-Using-By-OpenCV
+# Geometric Transformations Using OpenCV
+## Developed By : SANTHOSH KUMAR A
+## Register No  : 212224230250 
+
+## Aim
+
+To write a Python program using OpenCV to perform various geometric transformations on an image.
+
+The program performs the following operations:
+
+- Image Translation  
+- Image Scaling (Resizing)  
+- Image Shearing  
+- Image Reflection (Flipping)  
+- Image Rotation  
+
+---
+
+##  Software Used
+
+- Anaconda – Python 3.7  
+- Jupyter Notebook / VS Code  
+- OpenCV (`cv2`)  
+- NumPy  
+- Matplotlib  
+
+---
+
+##  Algorithm
+
+### Step 1:
+Import the required libraries: OpenCV, NumPy, and Matplotlib.
+
+### Step 2:
+Read the input image in color mode.
+
+### Step 3: Image Translation
+- Create a translation matrix to shift the image  
+- Move the image 50 pixels to the right and 80 pixels down  
+- Apply transformation using `cv2.warpAffine()`  
+- Display original and translated images  
+
+### Step 4: Image Scaling
+- Resize the image to 0.5× (downscale)  
+- Resize the image to 2× (upscale)  
+- Use `cv2.resize()`  
+- Display original, downscaled, and upscaled images  
+
+### Step 5: Image Shearing
+- Create transformation matrices for:
+  - Horizontal shearing  
+  - Vertical shearing  
+- Apply transformations using `cv2.warpAffine()`  
+- Display original and sheared images  
+
+### Step 6: Image Reflection
+- Perform flipping using `cv2.flip()`:
+  - Horizontal reflection  
+  - Vertical reflection  
+  - Both axes  
+- Display all reflected images  
+
+### Step 7: Image Rotation
+- Create rotation matrices for:
+  - 45° rotation  
+  - 90° rotation  
+- Use `cv2.getRotationMatrix2D()` and `cv2.warpAffine()`  
+- Display original and rotated images  
+
+---
+
+##  Program
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+```
+```
+image = cv2.imread("C:\\Users\\admin\\Downloads\\baseball.jpg") file
+```
+```
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))  display
+plt.title("Original Image")  
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+
+```
+tx, ty = 100, 50  
+M_translation = np.float32([[1, 0, tx], [0, 1, ty]])  
+translated_image = cv2.warpAffine(image, M_translation, (image.shape[1], image.shape[0]))
+```
+``` 
+plt.imshow(cv2.cvtColor(translated_image, cv2.COLOR_BGR2RGB))  
+plt.title("Translated Image")  
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+```
+
+fx, fy = 5.0, 2.0  
+scaled_image = cv2.resize(image, None, fx=fx, fy=fy, interpolation=cv2.INTER_LINEAR)
+```
+```
+plt.imshow(cv2.cvtColor(scaled_image, cv2.COLOR_BGR2RGB))  
+plt.title("Scaled Image")  
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+```
+shear_matrix = np.float32([[1, 0.5, 0], [0.5, 1, 0]])  
+sheared_image = cv2.warpAffine(image, shear_matrix, (image.shape[1], image.shape[0]))
+```
+```
+plt.imshow(cv2.cvtColor(sheared_image, cv2.COLOR_BGR2RGB)) 
+plt.title("Sheared Image") 
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+```
+reflected_image = cv2.flip(image, 2)  
+```
+```
+plt.imshow(cv2.cvtColor(reflected_image, cv2.COLOR_BGR2RGB))  image
+plt.title("Reflected Image")
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+```
+(height, width) = image.shape[:2]  
+angle = 45  
+center = (width // 2, height // 2)  
+M_rotation = cv2.getRotationMatrix2D(center, angle, 1)  
+)
+rotated_image = cv2.warpAffine(image, M_rotation, (width, height)) 
+```
+```
+plt.imshow(cv2.cvtColor(rotated_image, cv2.COLOR_BGR2RGB))  
+plt.title("Rotated Image")  
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+```
+x, y, w, h = 100, 100, 200, 150 
+cropped_image = image[y:y+h, x:x+w]
+```
+```
+plt.imshow(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))  
+plt.title("Cropped Image")  
+plt.axis('off')
+print("Name : SANTHOSH KUMAR A")
+print("REG NO: 212224230250")
+```
+##  Output
+### Original Image 
+<img width="671" height="507" alt="image" src="https://github.com/user-attachments/assets/fd4e5aff-028c-43cb-9f91-908133dc930c" />
+
+### Image Translation
+
+<img width="680" height="508" alt="image" src="https://github.com/user-attachments/assets/a12207cf-e0d7-49fb-9848-1ee401d76db7" />
+
+### Image Scaling
+<img width="680" height="273" alt="image" src="https://github.com/user-attachments/assets/1d0a8a34-d7d8-49a6-b280-2a1df0cb2e58" />
+
+
+### Image Shearing
+<img width="688" height="509" alt="image" src="https://github.com/user-attachments/assets/7abc00a2-2708-4fab-ae86-f359500fb8df" />
+  
+
+### Image Reflection
+<img width="677" height="508" alt="image" src="https://github.com/user-attachments/assets/dc2f8522-9139-4a1e-83e9-aeb0d78881ae" />
+
+### Image Rotation
+<img width="681" height="494" alt="image" src="https://github.com/user-attachments/assets/4da87e2b-c68f-4cf5-b58a-ea7e2d31c81f" />
+
+
+##  Result
+
+Thus, various geometric transformations such as translation, scaling, shearing, reflection, and rotation are successfully performed using OpenCV. These transformations demonstrate how images can be spatially manipulated for different computer vision applications.# Geometric-Transformations-Using-By-OpenCV
